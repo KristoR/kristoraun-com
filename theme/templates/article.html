@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags|e }} · {{ SITENAME }}{% endblock %}
+{% block description %}{{ article.summary|striptags|truncate(160)|e }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block content %}
+<article class="prose">
+  <header class="article-head">
+    <p class="kicker">{% if article.category == "projects" %}Project{% else %}Post{% endif %}</p>
+    <h1>{{ article.title }}</h1>
+    <p class="article-meta">
+      <time datetime="{{ article.date.isoformat() }}">{{ article.date|strftime("%-d %B %Y") }}</time>
+      {% if article.tags %}
+      <span class="tags">{% for tag in article.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</span>
+      {% endif %}
+      {% if article.repo %}
+      · <a href="{{ article.repo }}">Repository</a>
+      {% endif %}
+    </p>
+  </header>
+  {{ article.content }}
+</article>
+{% endblock %}

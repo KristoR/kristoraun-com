@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block description %}{{ page.summary|striptags|e }}{% endblock %}
+{% block content %}
+<article class="intro">
+  <h1>{{ page.title }}</h1>
+  {{ page.content }}
+  <p class="intro-links">
+    <a href="{{ SITEURL }}/about/">About</a>
+    <a href="{{ PROFILE.linkedin }}" rel="me">LinkedIn</a>
+  </p>
+</article>
+{% endblock %}

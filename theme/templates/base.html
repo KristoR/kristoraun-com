@@ -1,0 +1,70 @@
+{% set path = output_file[:-10] if output_file.endswith("index.html") else output_file %}
+{% set blog_posts = articles|default([])|selectattr("category", "equalto", "blog")|list %}
+{% set projects = hidden_articles|default([])|selectattr("category", "equalto", "projects")|list %}
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ PROFILE.description|e }}{% endblock %}">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+  <link rel="icon" href="{{ SITEURL }}/theme/img/favicon.svg" type="image/svg+xml">
+  {% if FEED_RSS and blog_posts %}
+  <link rel="alternate" type="application/rss+xml" title="{{ SITENAME }}: blog" href="{{ SITEURL }}/{{ FEED_RSS }}">
+  {% endif %}
+  {% if SITEURL %}
+  <link rel="canonical" href="{{ SITEURL }}/{{ path }}">
+
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:site_name" content="{{ SITENAME }}">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:url" content="{{ SITEURL }}/{{ path }}">
+  <meta property="og:image" content="{{ SITEURL }}/theme/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ PROFILE.name }}, data engineer">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {{ {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": PROFILE.name,
+    "url": SITEURL ~ "/",
+    "jobTitle": PROFILE.job_title,
+    "worksFor": {"@type": "Organization", "name": PROFILE.works_for},
+    "description": PROFILE.description,
+    "knowsAbout": PROFILE.knows_about,
+    "sameAs": [PROFILE.linkedin],
+  }|tojson(indent=2)|indent(2) }}
+  </script>
+  {% endif %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="{{ SITEURL }}/about/"{% if path == "about/" %} aria-current="page"{% endif %}>About</a>
+      {% if projects %}
+      <a href="{{ SITEURL }}/projects/"{% if path.startswith("projects/") %} aria-current="page"{% endif %}>Projects</a>
+      {% endif %}
+      {% if blog_posts %}
+      <a href="{{ SITEURL }}/blog/"{% if path.startswith("blog/") %} aria-current="page"{% endif %}>Blog</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <a href="{{ PROFILE.linkedin }}" rel="me">LinkedIn</a>
+    {% if FEED_RSS and blog_posts %}
+    <a href="{{ SITEURL }}/{{ FEED_RSS }}">RSS</a>
+    {% endif %}
+  </footer>
+</body>
+</html>

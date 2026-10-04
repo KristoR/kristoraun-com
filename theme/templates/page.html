@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title|striptags|e }} · {{ SITENAME }}{% endblock %}
+{% block description %}{{ page.summary|striptags|e }}{% endblock %}
+{% block content %}
+<article class="prose">
+  <h1>{{ page.title }}</h1>
+  {{ page.content }}
+</article>
+{% endblock %}

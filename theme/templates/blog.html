@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Blog · {{ SITENAME }}{% endblock %}
+{% block content %}
+<section class="listing">
+  <h1>Blog</h1>
+  <ul class="post-list">
+    {% for article in articles if article.category == "blog" %}
+    <li>
+      <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+      <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.date|strftime("%b %Y") }}</time>
+      {% if article.summary %}
+      <p class="post-summary">{{ article.summary|striptags|truncate(160)|e }}</p>
+      {% endif %}
+    </li>
+    {% else %}
+    <li>Nothing here yet.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

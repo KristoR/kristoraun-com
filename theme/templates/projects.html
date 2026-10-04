@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Projects · {{ SITENAME }}{% endblock %}
+{% block content %}
+<section class="listing">
+  <h1>Projects</h1>
+  <ul class="post-list">
+    {% for article in hidden_articles if article.category == "projects" %}
+    <li>
+      <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+      <time class="post-date" datetime="{{ article.date.isoformat() }}">{{ article.date|strftime("%b %Y") }}</time>
+      {% if article.summary %}
+      <p class="post-summary">{{ article.summary|striptags|truncate(160)|e }}</p>
+      {% endif %}
+    </li>
+    {% else %}
+    <li>Nothing here yet.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
