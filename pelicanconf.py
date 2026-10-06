@@ -17,6 +17,7 @@ PROFILE = {
         "analytics, data strategy, and governance."
     ),
     "linkedin": "https://www.linkedin.com/in/kristoraun/",
+    "etis": "https://www.etis.ee/CV/Kristo_Raun/eng",
     "knows_about": [
         "Data engineering",
         "Analytics",
