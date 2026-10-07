@@ -12,6 +12,7 @@ PROFILE = {
     "name": "Kristo Raun",
     "job_title": "Data Engineer",
     "works_for": "Lightyear",
+    "works_for_url": "https://lightyear.com/",
     "description": (
         "Data engineer at Lightyear, working across data engineering, "
         "analytics, data strategy, and governance."

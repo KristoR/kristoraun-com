@@ -2,7 +2,7 @@ Title: About
 Slug: about
 Summary: I'm a data engineer, currently building data infrastructure at Lightyear. My work spans data engineering, analytics, data strategy, and governance.
 
-I'm a data engineer, currently building data infrastructure at Lightyear. My work spans data engineering, analytics, data strategy, and governance.
+I'm a data engineer, currently building data infrastructure at [Lightyear](https://lightyear.com/). My work spans data engineering, analytics, data strategy, and governance.
 
 I've worked in data engineering for over 10 years, building data platforms, cloud data warehouses, and lakehouses across Azure, GCP, and AWS. The work has ranged from small startups to mobility and smart city platforms to finance and government, usually building pipelines, automating reporting, and helping teams avoid reinventing the wheel.
 

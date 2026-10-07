@@ -34,7 +34,7 @@
     "name": PROFILE.name,
     "url": SITEURL ~ "/",
     "jobTitle": PROFILE.job_title,
-    "worksFor": {"@type": "Organization", "name": PROFILE.works_for},
+    "worksFor": {"@type": "Organization", "name": PROFILE.works_for, "url": PROFILE.works_for_url},
     "description": PROFILE.description,
     "knowsAbout": PROFILE.knows_about,
     "sameAs": [PROFILE.linkedin, PROFILE.etis],
@@ -60,11 +60,10 @@
     {% block content %}{% endblock %}
   </main>
 
+  {% if FEED_RSS and blog_posts %}
   <footer class="site-footer">
-    <a href="{{ PROFILE.linkedin }}" rel="me">LinkedIn</a>
-    {% if FEED_RSS and blog_posts %}
     <a href="{{ SITEURL }}/{{ FEED_RSS }}">RSS</a>
-    {% endif %}
   </footer>
+  {% endif %}
 </body>
 </html>
