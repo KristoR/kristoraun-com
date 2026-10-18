@@ -26,7 +26,7 @@ body {
   line-height: 1.65;
 }
 
-h1, h2, h3, .site-name, .site-nav, .site-footer, .kicker, .article-meta, .post-date, .intro-links {
+h1, h2, h3, .site-name, .site-nav, .site-footer, .kicker, .article-meta, .post-date {
   font-family: var(--font-sans);
 }
 h1 { font-size: 2rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 1.25rem; }
@@ -61,12 +61,10 @@ a:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; bo
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--accent-dark); }
 
 .site-main { max-width: var(--wide); margin: 0 auto; padding: var(--space) var(--space) 4rem; }
-.prose, .intro, .listing { max-width: var(--measure); margin: 0 auto; overflow-wrap: break-word; }
+.prose, .listing { max-width: var(--measure); margin: 0 auto; overflow-wrap: break-word; }
 
-.intro { margin-top: 2rem; }
-.intro p { margin: 0 0 1.2rem; }
+.intro { margin-top: 4rem; }
 .intro > p:first-of-type { font-size: 1.25rem; line-height: 1.5; }
-.intro-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; font-size: 0.95rem; }
 
 .post-list { list-style: none; padding: 0; margin: 0; }
 .post-list li { padding: 1rem 0; border-bottom: 1px solid var(--line); }
