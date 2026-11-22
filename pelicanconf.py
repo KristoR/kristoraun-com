@@ -30,7 +30,7 @@ PROFILE = {
 }
 
 ARTICLE_PATHS = ["blog", "projects"]
-PAGE_PATHS = ["pages"]
+PAGE_PATHS = ["pages", "redirects"]
 STATIC_PATHS = ["images"]
 PATH_METADATA = r"(?P<category>blog|projects)/.*"
 # Hidden articles stay out of feeds, which keeps RSS blog-only.
