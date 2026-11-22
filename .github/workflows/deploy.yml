@@ -28,8 +28,8 @@ jobs:
 
       - name: Build site
         env:
-          SITEURL: ${{ steps.pages.outputs.base_url }}
-        run: pelican content -s publishconf.py -o output --fatal warnings
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
+        run: SITEURL="${PAGES_URL/#http:/https:}" pelican content -s publishconf.py -o output --fatal warnings
 
       - name: Upload site
         if: (github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main')
