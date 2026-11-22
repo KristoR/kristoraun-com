@@ -23,7 +23,7 @@ jobs:
 
       - name: Get Pages URL
         id: pages
-        if: github.event_name == 'workflow_dispatch'
+        if: (github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main')
         uses: actions/configure-pages@v6
 
       - name: Build site
@@ -32,13 +32,13 @@ jobs:
         run: pelican content -s publishconf.py -o output --fatal warnings
 
       - name: Upload site
-        if: github.event_name == 'workflow_dispatch'
+        if: (github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main')
         uses: actions/upload-pages-artifact@v5
         with:
           path: output
 
   deploy:
-    if: github.event_name == 'workflow_dispatch'
+    if: (github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main')
     needs: build
     runs-on: ubuntu-latest
     permissions:
