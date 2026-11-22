@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Blog · {{ SITENAME }}{% endblock %}
+{% block head_extra %}
+{% if not articles|selectattr("category", "equalto", "blog")|list %}
+  <meta http-equiv="refresh" content="0; url={{ SITEURL }}/">
+  <meta name="robots" content="noindex">
+{% endif %}
+{% endblock %}
 {% block content %}
 <section class="listing">
   <h1>Blog</h1>

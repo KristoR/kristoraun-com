@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Projects · {{ SITENAME }}{% endblock %}
+{% block head_extra %}
+{% if not hidden_articles|selectattr("category", "equalto", "projects")|list %}
+  <meta http-equiv="refresh" content="0; url={{ SITEURL }}/">
+  <meta name="robots" content="noindex">
+{% endif %}
+{% endblock %}
 {% block content %}
 <section class="listing">
   <h1>Projects</h1>

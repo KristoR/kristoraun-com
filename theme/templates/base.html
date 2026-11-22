@@ -10,6 +10,7 @@
   <meta name="description" content="{% block description %}{{ PROFILE.description|e }}{% endblock %}">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
   <link rel="icon" href="{{ SITEURL }}/theme/img/favicon.svg" type="image/svg+xml">
+  {% block head_extra %}{% endblock %}
   {% if FEED_RSS and blog_posts %}
   <link rel="alternate" type="application/rss+xml" title="{{ SITENAME }}: blog" href="{{ SITEURL }}/{{ FEED_RSS }}">
   {% endif %}
